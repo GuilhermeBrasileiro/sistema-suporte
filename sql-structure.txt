@@ -1,0 +1,72 @@
+CREATE DATABASE suporte_personalizado;
+
+USE suporte_personalizado;
+
+CREATE TABLE chamados (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    sobrenome VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    departamento VARCHAR(50) NOT NULL,
+    problema VARCHAR(50) NOT NULL,
+    descricao VARCHAR(2500) NOT NULL,
+    aberto TIMESTAMP,
+    fechado TIMESTAMP,
+    token VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE interacao_chamado (
+    id INT NOT NULL AUTO_INCREMENT,
+    id_chamado VARCHAR(255),
+    numero_chamado INT NOT NULL,
+    mensagem TEXT(1250) NOT NULL,
+    remetente INT NOT NULL,
+    enviado TIMESTAMP NOT NULL,
+    status INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE users (
+    id INT NOT NULL AUTO_INCREMENT,
+    usuario VARCHAR(64) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    nome VARCHAR(64) NOT NULL,
+    cargo INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO users VALUES (null,'administrador','$2y$10$j3AGEwnTB0jsCrQKKmSGm.AtRIpVotOIqgK2rfTywvrXAL.eEF9DC','Administrador Global','1');
+
+CREATE TABLE inventario (
+    id INT NOT NULL AUTO_INCREMENT,
+    patrimonio VARCHAR(64),
+    tipo VARCHAR(64),
+    subtipo VARCHAR(64),
+    fabricante VARCHAR(64),
+    modelo VARCHAR(64),
+    processador VARCHAR(64),
+    memoria VARCHAR(64),
+    sist_licenciado VARCHAR(64),
+    sist_instalado VARCHAR(64),
+    licenca_windows VARCHAR(64),
+    pacote_office VARCHAR(64),
+    licenca_office VARCHAR(64),
+    numero_serie VARCHAR(64),
+    service_tag VARCHAR(64),
+    imei VARCHAR(64),
+    data_compra VARCHAR(64),
+    numero_nf VARCHAR(64),
+    status VARCHAR(64),
+    usuario_responsavel VARCHAR(64),
+    observacoes VARCHAR(256),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE notes (
+    id INT NOT NULL AUTO_INCREMENT,
+    usuario VARCHAR(64) NOT NULL,
+    titulo VARCHAR(100) NOT NULL,
+    slug VARCHAR(2000) NOT NULL,
+    PRIMARY KEY (id)
+);
